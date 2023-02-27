@@ -8,7 +8,7 @@
 import Foundation
 
 protocol APIServiceProtocol {
-    func fetchPopularPhoto( complete: @escaping ( _ success: Bool, _ photos: [Photo], _ error: APIError? )-> () )
+    func fetchPopularPhoto( complete: @escaping ( _ success: Bool, _ photos: [Photo], _ error: APIError? )->())
 
     func getAllCards(completion: @escaping (Result<[Card], Error>) -> Void)
 }
@@ -47,7 +47,7 @@ class APIService: APIServiceProtocol {
         }.resume()
     }
     // Simulate a long waiting for fetching
-    func fetchPopularPhoto( complete: @escaping ( _ success: Bool, _ photos: [Photo], _ error: APIError? )-> () ) {
+    func fetchPopularPhoto( complete: @escaping ( _ success: Bool, _ photos: [Photo], _ error: APIError? )->() ) {
         DispatchQueue.global().async {
             sleep(3)
             let path = Bundle.main.path(forResource: "content", ofType: "json")!
